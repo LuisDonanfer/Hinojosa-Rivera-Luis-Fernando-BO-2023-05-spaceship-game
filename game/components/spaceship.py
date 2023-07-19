@@ -4,8 +4,8 @@ from pygame.sprite import Sprite
 
 
 class Spaceship(Sprite):
-    SPACESHIP_WIDHT = 40
-    SPACESHIP_HEIGHT = 60
+    SPACESHIP_WIDHT = 60
+    SPACESHIP_HEIGHT = 80
     SPACESHIP_POS_X = SCREEN_WIDTH / 2
     SPACESHIP_POS_Y = 500
 
