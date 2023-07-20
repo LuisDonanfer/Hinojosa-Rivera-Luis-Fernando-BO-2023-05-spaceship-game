@@ -1,7 +1,8 @@
 import pygame
 from pygame.sprite import Sprite
 import random
-from game.utils.constants import ENEMY_1, SCREEN_HEIGHT, SCREEN_WIDTH
+from game.components.bullets.bullet import Bullet
+from game.utils.constants import SCREEN_HEIGHT, SCREEN_WIDTH
 
 class Enemy(Sprite):
     ENEMY_WIDHT = 60
@@ -11,6 +12,8 @@ class Enemy(Sprite):
     SPEED_ON_Y = random.randint(1,5)
     SPEED_ON_X = random.randint(1,10)
     MOVES = { 0:'left', 1:'right'}
+    INITIAL_SHOOTING_TIME = 1000
+    FINAL_SHOOTING_TIME = 3000
 
     def __init__(self,image):
         self.image = image
@@ -19,9 +22,15 @@ class Enemy(Sprite):
         self.direction = self.MOVES[random.randint(0, 1)]
         self.movement_count = 0
         self.moves_before_change = random.randint(20, 50)
+        self.type = 'enemy'
+        current_time = pygame.time.get_ticks()
+        self.shooting_time = random.randint(current_time + self.INITIAL_SHOOTING_TIME, current_time + self.FINAL_SHOOTING_TIME)
+
+
     
-    def update(self, enemies):        
+    def update(self, enemies, game):        
         self.rect.y += self.SPEED_ON_Y
+        self.shoot(game.bulletManager)
 
         if self.direction == self.MOVES[0]:
             self.rect.x -= self.SPEED_ON_X     
@@ -52,3 +61,10 @@ class Enemy(Sprite):
             
             self.SPEED_ON_X = random.randint(1,10)
             self.SPEED_ON_Y = random.randint(1,5)
+        
+    def shoot(self, bulletManager):
+        current_time = pygame.time.get_ticks()
+        if (self.shooting_time <= current_time):
+            bullet = Bullet(self)
+            bulletManager.add_bullet(bullet)
+            self.shooting_time += random.randint(self.INITIAL_SHOOTING_TIME, self. FINAL_SHOOTING_TIME)

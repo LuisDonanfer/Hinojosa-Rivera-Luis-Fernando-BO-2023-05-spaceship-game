@@ -1,17 +1,17 @@
 from game.components.enemies.enemy import Enemy
 from game.components.enemies.enemyAlien import EnemyAlien
-from game.utils.constants import ENEMY_1, ALIEN
+from game.utils.constants import  ENEMY_LIST
 
 class EnemyManager:
 
     def __init__(self):
-        self.enemyImageList = ENEMY_1
+        self.enemyImageList = ENEMY_LIST
         self.enemies = []
 
-    def update(self):
+    def update(self, game):
         self.add_enemy()
         for enemy in self.enemies:
-            enemy.update(self.enemies)
+            enemy.update(self.enemies, game)
 
     def draw(self, screen):
         for enemy in self.enemies:
@@ -19,7 +19,7 @@ class EnemyManager:
 
     def add_enemy(self):
         if len(self.enemies) <len(self.enemyImageList)-1:
-            self.enemies.append(EnemyAlien())
+            #self.enemies.append(EnemyAlien())
             for image in self.enemyImageList:
                 enemy = Enemy(image)
                 self.enemies.append(enemy)

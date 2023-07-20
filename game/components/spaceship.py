@@ -13,6 +13,7 @@ class Spaceship(Sprite):
         self.image = SPACESHIP
         self.image = pygame.transform.scale(self.image,(self.SPACESHIP_WIDHT, self.SPACESHIP_HEIGHT))
         self.rect = self.image.get_rect(midbottom =(self.SPACESHIP_POS_X, self.SPACESHIP_POS_Y))
+        self.type = 'player'
 
 
     def update(self, user_input):
