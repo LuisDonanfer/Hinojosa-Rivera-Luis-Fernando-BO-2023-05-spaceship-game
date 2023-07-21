@@ -25,16 +25,16 @@ class Spaceship(Sprite):
             if self.rect.x < -self.SPACESHIP_WIDHT:
                 self.rect.x = SCREEN_WIDTH
 
-        elif user_input[pygame.K_RIGHT]: 
+        if user_input[pygame.K_RIGHT]: 
             self.rect.x +=10
             if self.rect.x > SCREEN_WIDTH:
                 self.rect.x = -self.SPACESHIP_WIDHT
 
 
-        elif user_input[pygame.K_UP] and self.rect.top > 40:
+        if user_input[pygame.K_UP] and self.rect.top > 40:
             self.rect.y -=10
             
-        elif user_input[pygame.K_DOWN] and self.rect.bottom < SCREEN_HEIGHT:
+        if user_input[pygame.K_DOWN] and self.rect.bottom < SCREEN_HEIGHT:
             self.rect.y +=10
         if user_input[pygame.K_SPACE] and not self.pressed:
             self.pressed = True

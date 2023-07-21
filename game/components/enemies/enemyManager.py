@@ -23,3 +23,6 @@ class EnemyManager:
             for image in self.enemyImageList:
                 enemy = Enemy(image)
                 self.enemies.append(enemy)
+
+    def reset(self):
+        self.enemies = []
