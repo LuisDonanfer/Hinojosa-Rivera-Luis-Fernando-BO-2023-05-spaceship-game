@@ -41,6 +41,13 @@ EXPLOSION_LIST= [pygame.image.load(os.path.join(IMG_DIR, "Bullet/ex1.png")),
              pygame.image.load(os.path.join(IMG_DIR, "Bullet/ex7.png"))
              ]
 
+
+BUTTON_PLAY = pygame.image.load(os.path.join(IMG_DIR, 'Other/buttonPlay.png'))
+BUTTON_RESTART = pygame.image.load(os.path.join(IMG_DIR, 'Other/buttonRestart.png'))
+
+FONDO_INICIO = pygame.image.load(os.path.join(IMG_DIR, 'Other/fondo2.png'))
+
+
 ALIEN = pygame.image.load(os.path.join(IMG_DIR, "Enemy/alien.png"))
 
 FONT_STYLE = 'freesansbold.ttf'

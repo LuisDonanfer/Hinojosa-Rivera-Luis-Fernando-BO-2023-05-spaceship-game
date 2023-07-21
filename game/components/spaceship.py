@@ -47,6 +47,8 @@ class Spaceship(Sprite):
         screen.blit(self.image, self.rect)
     
     def shoot(self, bulletManager):
-        print("si entra")
         bullet = Bullet(self)
         bulletManager.add_bullet(bullet)
+    def reset(self):
+        self.rect = self.image.get_rect(midbottom =(self.SPACESHIP_POS_X, self.SPACESHIP_POS_Y))
+    

@@ -16,7 +16,8 @@ class BulletManager:
             bullet.update(self.enemy_bullets)
 
             if bullet.rect.colliderect(game.player) and bullet.owner =='enemy':
-                game.increase_deaht_counter()
+                #game.increase_deaht_counter()
+                game.death_counter +=1
                 game.playing = False
                 pygame.time.delay(2000)
                 break
@@ -26,8 +27,8 @@ class BulletManager:
             for enemy in game.enemyManager.enemies:
                 if bullet.owner =='player' and bullet.rect.colliderect(enemy):
                     game.enemyManager.enemies.remove(enemy)
-                    self.player_bullets.remove(bullet)
-                    game.increase_score()
+                   # game.increase_score()
+                    game.score +=1
 
 
     def draw(self, screen):
@@ -41,7 +42,7 @@ class BulletManager:
         if(bullet.owner == 'enemy' and len(self.enemy_bullets) < len(self.CANT)):
             self.enemy_bullets.append(bullet)
         if(bullet.owner == 'player' and len(self.player_bullets) < 20):
-            print("si entra22222")
+            print("si entra")
             self.player_bullets.append(bullet)
 
     def reset(self):
