@@ -7,9 +7,9 @@ from game.utils.constants import SCREEN_HEIGHT, SCREEN_WIDTH
 class Enemy(Sprite):
     ENEMY_WIDHT = 60
     ENEMY_HEIGHT = 80
-    Y_POS = -(ENEMY_HEIGHT + 20)
+    Y_POS = -(ENEMY_HEIGHT + 5)
     X_POS_RANGE = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
-    SPEED_ON_Y = random.randint(1,5)
+    SPEED_ON_Y = random.randint(1,2)
     SPEED_ON_X = random.randint(1,10)
     MOVES = { 0:'left', 1:'right'}
     INITIAL_SHOOTING_TIME = 1000
@@ -19,6 +19,7 @@ class Enemy(Sprite):
         self.image = image
         self.image = pygame.transform.scale(self.image,(self.ENEMY_WIDHT, self.ENEMY_HEIGHT))
         self.rect = self.image.get_rect(midtop = (random.choice(self.X_POS_RANGE), self.Y_POS))
+        self.center_nave = self.rect.center
         self.direction = self.MOVES[random.randint(0, 1)]
         self.movement_count = 0
         self.moves_before_change = random.randint(20, 50)
@@ -52,7 +53,7 @@ class Enemy(Sprite):
             self.moves_before_change = random.randint(20,50)
             
             self.SPEED_ON_X = random.randint(1,10)
-            self.SPEED_ON_Y = random.randint(1,5)
+            self.SPEED_ON_Y = random.randint(1,2)
                 
         elif self.movement_count >= self.moves_before_change and self.direction == self.MOVES[0] or self.rect.left <= 0:
             self.direction = self.MOVES[1]
@@ -60,7 +61,7 @@ class Enemy(Sprite):
             self.moves_before_change = random.randint(20,50)
             
             self.SPEED_ON_X = random.randint(1,10)
-            self.SPEED_ON_Y = random.randint(1,5)
+            self.SPEED_ON_Y = random.randint(1,2)
         
     def shoot(self, bulletManager):
         current_time = pygame.time.get_ticks()

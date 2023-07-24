@@ -2,11 +2,11 @@ import pygame
 from pygame.sprite import Sprite
 
 from game.utils.constants import BULLET, BULLET_ENEMY, SCREEN_HEIGHT
-from game.components.bullets.bulletManager import BulletManager
+from game.components.bullets.bullet_Manager import BulletManager
 
 class Bullet(Sprite):
-    PLAYER_IMAGE = pygame.transform.scale(BULLET, (30, 40))
-    ENEMY_IMAGE = pygame.transform.scale(BULLET_ENEMY, (9, 32))
+    PLAYER_IMAGE = pygame.transform.scale(BULLET, (9, 32))
+    ENEMY_IMAGE = pygame.transform.scale(BULLET_ENEMY, (30, 40))
     BULLET_TYPES = {'player':PLAYER_IMAGE, 'enemy':ENEMY_IMAGE}
     SPEED = 10
     def __init__(self, spaceship):
